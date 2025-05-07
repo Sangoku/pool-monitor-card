@@ -196,7 +196,7 @@ export class PoolMonitorCard extends LitElement {
 
     newData.title = config.display.show_names ? title : html`&nbsp;`;
 
-    // Gestion des icônes et images pour chaque capteur
+    // Management of icons and images for each sensor
     newData.hide_icon = false;
     newData.is_mdi = false;
     if (!config.display.show_icons) {

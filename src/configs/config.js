@@ -141,6 +141,14 @@ export const DEFAULT_CONFIG = {
       mode: 'centric',
       min_limit: 0,
     },
+    bromine: {
+      name: 'Bromine',
+      unit: 'ppm',
+      setpoint: 3,
+      step: 0.5,
+      mode: 'centric',
+      min_limit: 0,
+    },
     pressure: {
       name: 'Filter Pressure',
       unit: 'psi',

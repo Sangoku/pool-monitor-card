@@ -45,8 +45,10 @@ The "Pool Monitor Card" is a Home Assistant plugin that displays information fro
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------------- |
 | ![Temperature](resources/temperature.png) ![pH](resources/ph.png) ![ORP](resources/orp.png) ![TDS](resources/tds.png) ![EC](resources/ec.png)                                                                               | **Essential Parameters** | temperature, pH, ORP, TDS and EC                                     |
 | ![Salinity](resources/salinity.png) ![Cyanuric acid](resources/cya.png) ![Calcium](resources/calcium.png) ![Phosphate](resources/phosphate.png) ![Alkalinity](resources/alkalinity.png)                                     | **Chemical Balance**     | salinity, cyanuric acid, calcium, phosphate and alkalinity           |
-| ![Free chlorine](resources/free_chlorine.png) ![Total chlorine](resources/total_chlorine.png) ![Filter pressure](resources/pressure.png) ![Specific gravity](resources/sg.png) ![Magnesium](resources/magnesium.png)        | **Treatment**            | free/total chlorine, filter pressure, specific gravity and magnesium |
+| ![Free chlorine](resources/free_chlorine.png) ![Total chlorine](resources/total_chlorine.png) ![Bromine](resources/bromine.png) ![Filter pressure](resources/pressure.png) ![Specific gravity](resources/sg.png) ![Magnesium](resources/magnesium.png)        | **Treatment**            | free/total chlorine, bromine, filter pressure, specific gravity and magnesium |
 | ![Water level](resources/water_level.png) ![Flow rate](resources/flow_rate.png) ![UV radiation](resources/uv_radiation.png) ![Product volume](resources/product_volume.png) ![Product weight](resources/product_weight.png) | **Maintenance**          | water level, flow rate, UV radiation and product management          |
+
+</div>
 
 For detailed information about all available sensors and their ideal ranges, please see our [Sensors Documentation](docs/sensors.md).
 
@@ -223,7 +225,7 @@ You can find their default values in the documentation.
 While all sensors are optional, you must define at least one entity for the card to function correctly.
 
 | Sensor ID        | Requirement | Description                                                                                          | Name             | Unit   | Setpoint | Step | Min Limit |
-| ---------------- | ----------- | ---------------------------------------------------------------------------------------------------- | ---------------- | ------ | -------- | ---- | --------- |
+|------------------| ----------- |------------------------------------------------------------------------------------------------------| ---------------- | ------ | -------- | ---- | --------- |
 | temperature      | Optional\*  | The entity that measures the water temperature.                                                      | Temperature      | °C     | 27       | 1    | -         |
 | ph               | Optional\*  | The entity that measures the acidity or basicity of the water.                                       | pH               | pH     | 7.2      | 0.2  | 0         |
 | orp              | Optional\*  | The entity that measures the Oxidation Reduction Potential of the water.                             | ORP              | mV     | 700      | 50   | 0         |
@@ -244,6 +246,7 @@ While all sensors are optional, you must define at least one entity for the card
 | uv_radiation     | Optional\*  | The entity that measures the UV light output in your pool's sanitization system.                     | UV Radiation     | mW/cm² | 4        | 1    | 0         |
 | product_volume   | Optional\*  | The entity that tracks the volume of liquid chemical products in storage.                            | Product Volume   | L      | 20       | 5    | 0         |
 | product_weight   | Optional\*  | The entity that monitors the weight of powdered chemical products in storage.                        | Product Weight   | kg     | 25       | 5    | 0         |
+| bromine          | Optional\*  | The entity that measures the concentration of free Bromine in the water.                             | Free Chlorine    | ppm    | 3        | 0.5  | 0         |
 
 ```yaml
 sensors:

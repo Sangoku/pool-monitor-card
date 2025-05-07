@@ -32,6 +32,8 @@ This document provides detailed information about the various sensors and measur
 
 - **Total Chlorine**: This measures the combined concentration of both free chlorine and chlorine that has combined with contaminants in the water. The ideal range for total chlorine in a pool is up to 5 ppm.
 
+- **Bromine**: This is an alternative sanitizer to chlorine used in pools and spas. It is more stable at higher temperatures and pH levels than chlorine. The ideal range for bromine in a pool is between 3 and 5 ppm.
+
 - **Filter pressure**: This measures the pressure inside the pool filter. A high filter pressure can indicate that the filter is dirty and needs to be cleaned. The ideal filter pressure can vary depending on the make and model of the pool filter.
 
 - **Specific Gravity**: A measure that indicates if an object will float or sink in water. Water has a specific gravity of 1.0 at 20°C. This reference point helps determine if substances will float (specific gravity < 1) or sink (specific gravity > 1) in water. This property is important for pool equipment and chemical management.
@@ -66,6 +68,7 @@ This document provides detailed information about the various sensors and measur
 | alkalinity       | Alkalinity              | ppm    | 100               | 20            | 0         | Identical for pH stabilization                                            |
 | free_chlorine    | Free Chlorine           | ppm    | 3                 | 0.5           | 0         | Identical for effective disinfection                                      |
 | total_chlorine   | Total Chlorine          | ppm    | 3                 | 0.5           | 0         | Identical for monitoring combined chlorine excess                         |
+| bromine          | Bromine                 | ppm    | 3                 | 0.5           | 0         | Alternative sanitizer to chlorine, more stable at higher temperatures     |
 | pressure         | Pressure                | psi    | 12                | 2             | 0         | Identical for both pool types                                             |
 | specific_gravity | Specific Gravity        | sg     | 1.1               | 0.2           | 0         | Different: relevant for salt pools (higher due to density)                |
 | magnesium        | Magnesium               | ppm    | 1200              | 100           | 0         | Mainly relevant for salt pools (magnesium chloride used for electrolysis) |
