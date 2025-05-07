@@ -41,12 +41,12 @@ The "Pool Monitor Card" is a Home Assistant plugin that displays information fro
 
 <div style="display: flex; flex-direction: column; gap: 15px; margin: 20px 0; font-family: Arial, sans-serif; color: #333;">
 
-| Icons                                                                                                                                                                                                                       | Category                 | Parameters                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------------------------- |
-| ![Temperature](resources/temperature.png) ![pH](resources/ph.png) ![ORP](resources/orp.png) ![TDS](resources/tds.png) ![EC](resources/ec.png)                                                                               | **Essential Parameters** | temperature, pH, ORP, TDS and EC                                     |
-| ![Salinity](resources/salinity.png) ![Cyanuric acid](resources/cya.png) ![Calcium](resources/calcium.png) ![Phosphate](resources/phosphate.png) ![Alkalinity](resources/alkalinity.png)                                     | **Chemical Balance**     | salinity, cyanuric acid, calcium, phosphate and alkalinity           |
-| ![Free chlorine](resources/free_chlorine.png) ![Total chlorine](resources/total_chlorine.png) ![Bromine](resources/bromine.png) ![Filter pressure](resources/pressure.png) ![Specific gravity](resources/sg.png) ![Magnesium](resources/magnesium.png)        | **Treatment**            | free/total chlorine, bromine, filter pressure, specific gravity and magnesium |
-| ![Water level](resources/water_level.png) ![Flow rate](resources/flow_rate.png) ![UV radiation](resources/uv_radiation.png) ![Product volume](resources/product_volume.png) ![Product weight](resources/product_weight.png) | **Maintenance**          | water level, flow rate, UV radiation and product management          |
+| Icons                                                                                                                                                                                                                                                  | Category                 | Parameters                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ | ----------------------------------------------------------------------------- |
+| ![Temperature](resources/temperature.png) ![pH](resources/ph.png) ![ORP](resources/orp.png) ![TDS](resources/tds.png) ![EC](resources/ec.png)                                                                                                          | **Essential Parameters** | temperature, pH, ORP, TDS and EC                                              |
+| ![Salinity](resources/salinity.png) ![Cyanuric acid](resources/cya.png) ![Calcium](resources/calcium.png) ![Phosphate](resources/phosphate.png) ![Alkalinity](resources/alkalinity.png)                                                                | **Chemical Balance**     | salinity, cyanuric acid, calcium, phosphate and alkalinity                    |
+| ![Free chlorine](resources/free_chlorine.png) ![Total chlorine](resources/total_chlorine.png) ![Bromine](resources/bromine.png) ![Filter pressure](resources/pressure.png) ![Specific gravity](resources/sg.png) ![Magnesium](resources/magnesium.png) | **Treatment**            | free/total chlorine, bromine, filter pressure, specific gravity and magnesium |
+| ![Water level](resources/water_level.png) ![Flow rate](resources/flow_rate.png) ![UV radiation](resources/uv_radiation.png) ![Product volume](resources/product_volume.png) ![Product weight](resources/product_weight.png)                            | **Maintenance**          | water level, flow rate, UV radiation and product management                   |
 
 </div>
 
@@ -225,7 +225,7 @@ You can find their default values in the documentation.
 While all sensors are optional, you must define at least one entity for the card to function correctly.
 
 | Sensor ID        | Requirement | Description                                                                                          | Name             | Unit   | Setpoint | Step | Min Limit |
-|------------------| ----------- |------------------------------------------------------------------------------------------------------| ---------------- | ------ | -------- | ---- | --------- |
+| ---------------- | ----------- | ---------------------------------------------------------------------------------------------------- | ---------------- | ------ | -------- | ---- | --------- |
 | temperature      | Optional\*  | The entity that measures the water temperature.                                                      | Temperature      | °C     | 27       | 1    | -         |
 | ph               | Optional\*  | The entity that measures the acidity or basicity of the water.                                       | pH               | pH     | 7.2      | 0.2  | 0         |
 | orp              | Optional\*  | The entity that measures the Oxidation Reduction Potential of the water.                             | ORP              | mV     | 700      | 50   | 0         |
@@ -416,12 +416,12 @@ This card wouldn't be what it is today without our amazing contributors! I'm inc
 ---
 
 ## Quality Assurance
+
 [![Coverage Status](https://codecov.io/gh/wilsto/pool-monitor-card/branch/master/graph/badge.svg)](https://codecov.io/gh/wilsto/pool-monitor-card)
 
 - 📊 [Unit Test Coverage Report](test-results/html/index.html)
 - 🎨 [Visual Tests Report](example/visual-test-report.html)
 - 🔍 [Code Coverage Report](coverage/lcov-report/index.html)
-
 
 ---
 

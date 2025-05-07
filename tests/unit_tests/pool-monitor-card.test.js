@@ -219,15 +219,15 @@ describe('Pool Monitor Card', () => {
           states: {
             'sensor.test': {
               state: '25',
-              last_updated: new Date().toISOString()
-            }
-          }
+              last_updated: new Date().toISOString(),
+            },
+          },
         };
         card.config = {
           display: {
-            show_icons: true
+            show_icons: true,
           },
-          colors: {}
+          colors: {},
         };
 
         // Test avec icon 'hide'
@@ -241,7 +241,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           '°C',
           'hide',
-          null
+          null,
         );
         expect(result.hide_icon).toBe(true);
 
@@ -256,7 +256,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           '°C',
           null,
-          'custom_image.png'
+          'custom_image.png',
         );
         expect(result.img_src).toBe('custom_image.png');
         expect(result.is_mdi).toBe(false);
@@ -272,7 +272,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           '°C',
           'mdi:test',
-          null
+          null,
         );
         expect(result.is_mdi).toBe(true);
         expect(result.mdi_icon).toBe('mdi:test');
@@ -288,7 +288,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           '°C',
           null,
-          null
+          null,
         );
         expect(result.img_src).toContain('ph.png');
       });
@@ -299,15 +299,15 @@ describe('Pool Monitor Card', () => {
           states: {
             'sensor.test': { state: '25' },
             'sensor.min': { state: '20' },
-            'sensor.max': { state: '30' }
-          }
+            'sensor.max': { state: '30' },
+          },
         };
         card.config = {
           display: {
             show_icons: false,
-            show_units: true
+            show_units: true,
           },
-          colors: {}
+          colors: {},
         };
 
         const result = card.calculateData(
@@ -318,7 +318,7 @@ describe('Pool Monitor Card', () => {
           'sensor.max',
           25,
           0.5,
-          '°C'
+          '°C',
         );
 
         expect(result.min_value).toBe(20);
@@ -326,18 +326,17 @@ describe('Pool Monitor Card', () => {
         expect(result.value).toBe(25);
       });
 
-      
       it('should handle missing entities', () => {
         const card = new PoolMonitorCard();
         card.hass = {
-          states: {}
+          states: {},
         };
         card.config = {
           display: {
             language: 'en',
-            show_icons: false
+            show_icons: false,
           },
-          colors: {}
+          colors: {},
         };
 
         const result = card.calculateData(
@@ -348,7 +347,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           undefined,
           undefined,
-          '°C'
+          '°C',
         );
 
         expect(result.value).toBeNull();
@@ -362,17 +361,17 @@ describe('Pool Monitor Card', () => {
           states: {
             'sensor.test': {
               state: '25',
-              last_updated: now.toISOString()
-            }
-          }
+              last_updated: now.toISOString(),
+            },
+          },
         };
         card.config = {
           display: {
             show_icons: false,
             show_last_updated: true,
-            language: 'en'
+            language: 'en',
           },
-          colors: {}
+          colors: {},
         };
 
         const result = card.calculateData(
@@ -383,7 +382,7 @@ describe('Pool Monitor Card', () => {
           undefined,
           undefined,
           undefined,
-          '°C'
+          '°C',
         );
 
         expect(result.last_updated).toBeDefined();
@@ -394,8 +393,8 @@ describe('Pool Monitor Card', () => {
         const card = new PoolMonitorCard();
         card.hass = {
           states: {
-            'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' }
-          }
+            'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' },
+          },
         };
 
         // Configuration de base avec override et override_value
@@ -407,7 +406,7 @@ describe('Pool Monitor Card', () => {
           mode: 'normal',
           setpoint: 35,
           min: 20,
-          max: 40
+          max: 40,
         };
 
         card.config = {
@@ -419,16 +418,16 @@ describe('Pool Monitor Card', () => {
             show_names: true,
             show_last_updated: false,
             gradient: true,
-            language: 'en'
+            language: 'en',
           },
           colors: {
             warn: '#ff0000',
             low: '#00ff00',
-            normal: '#0000ff'
+            normal: '#0000ff',
           },
           sensors: {
-            test: sensorConfig
-          }
+            test: sensorConfig,
+          },
         };
 
         // Test avec override activé
@@ -445,9 +444,9 @@ describe('Pool Monitor Card', () => {
           null,
           'normal',
           0,
-          42,  // override_value
+          42, // override_value
           true, // override activé
-          false
+          false,
         );
 
         // La valeur devrait maintenant être 42 car l'override n'est plus écrasé
@@ -467,9 +466,9 @@ describe('Pool Monitor Card', () => {
           null,
           'normal',
           0,
-          42,  // override_value présent mais pas utilisé
+          42, // override_value présent mais pas utilisé
           false, // override désactivé
-          false
+          false,
         );
 
         expect(resultNoOverride.value).toBe(25); // utilise la valeur du capteur
@@ -498,9 +497,9 @@ describe('Pool Monitor Card', () => {
 
       it('should handle special number formats', () => {
         // Notation scientifique avec exposant positif (pas de décimales)
-        expect(card.countDecimals(42e2)).toBe(0);  // 4200
+        expect(card.countDecimals(42e2)).toBe(0); // 4200
         // Nombre avec décimales qui se terminent par 0
-        expect(card.countDecimals(42.100)).toBe(1);
+        expect(card.countDecimals(42.1)).toBe(1);
         // Nombre sans partie décimale
         expect(card.countDecimals(4200)).toBe(0);
       });
@@ -508,7 +507,7 @@ describe('Pool Monitor Card', () => {
       it('should handle numbers with toString override', () => {
         const num = {
           valueOf: () => 42.123,
-          toString: () => '42.123'
+          toString: () => '42.123',
         };
         expect(card.countDecimals(num)).toBe(3);
       });
@@ -521,33 +520,35 @@ describe('Pool Monitor Card', () => {
             'sensor.test': {
               state: '42',
               attributes: {
-                unit_of_measurement: '°C'
-              }
-            }
-          }
+                unit_of_measurement: '°C',
+              },
+            },
+          },
         };
         card.config = {
           display: {
             language: 'en',
             show_icons: true,
             show_units: true,
-            show_labels: true
+            show_labels: true,
           },
           colors: {
             low: '#fdcb6e',
             normal: '#26c281',
             warn: '#ff0000',
-            alert: '#ff0000'
+            alert: '#ff0000',
           },
           sensors: {
-            unsupported_type: [{
-              name: 'test',
-              entity: 'sensor.test',
-              invalid: true  // Marquer explicitement comme invalide
-            }]
-          }
+            unsupported_type: [
+              {
+                name: 'test',
+                entity: 'sensor.test',
+                invalid: true, // Marquer explicitement comme invalide
+              },
+            ],
+          },
         };
-        
+
         const result = card.processData();
         expect(result.unsupported_type_1.invalid).toBe(true);
       });
@@ -568,7 +569,7 @@ describe('Pool Monitor Card', () => {
           show_names: true,
           show_last_updated: false,
           gradient: true,
-          language: 'en'
+          language: 'en',
         },
         colors: {
           low: '#fdcb6e',
@@ -576,7 +577,7 @@ describe('Pool Monitor Card', () => {
           normal: '#00b894',
           cool: '#00BFFF',
           marker: '#000000',
-          hi_low: '#00000099'
+          hi_low: '#00000099',
         },
         sensors: {
           test: {
@@ -588,20 +589,20 @@ describe('Pool Monitor Card', () => {
             max: 50,
             setpoint: 35,
             step: 1,
-            mode: 'normal'
-          }
-        }
+            mode: 'normal',
+          },
+        },
       });
       card.hass = {
         states: {
-          'sensor.test': { 
+          'sensor.test': {
             state: '25',
             last_updated: '2023-01-01T12:00:00Z',
             attributes: {
-              unit_of_measurement: '°C'
-            }
-          }
-        }
+              unit_of_measurement: '°C',
+            },
+          },
+        },
       };
     });
 
@@ -619,15 +620,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        32,  // Valeur en dessous de class[0] (33)
+        32, // Valeur en dessous de class[0] (33)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // En mode normal, une valeur < class[0] devrait avoir la couleur 'warn'
       expect(result.color).to.equal(card.config.colors.warn);
       expect(result.state).to.not.be.empty;
@@ -647,15 +648,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        33.5,  // Valeur entre class[0] (33) et class[1] (34)
+        33.5, // Valeur entre class[0] (33) et class[1] (34)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // Entre class[0] et class[1], devrait avoir la couleur 'low'
       expect(result.color).to.equal(card.config.colors.low);
       expect(result.state).to.not.be.empty;
@@ -675,15 +676,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        34.5,  // Valeur entre class[1] (34) et class[2] (35)
+        34.5, // Valeur entre class[1] (34) et class[2] (35)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // Entre class[1] et class[2], devrait avoir la couleur 'normal'
       expect(result.color).to.equal(card.config.colors.normal);
       expect(result.state).to.not.be.empty;
@@ -703,15 +704,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        35.5,  // Valeur entre class[2] (35) et class[3] (36)
+        35.5, // Valeur entre class[2] (35) et class[3] (36)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // Entre class[2] et class[3], devrait avoir la couleur 'normal'
       expect(result.color).to.equal(card.config.colors.normal);
       expect(result.state).to.not.be.empty;
@@ -731,15 +732,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        36.5,  // Valeur entre class[3] (36) et class[4] (37)
+        36.5, // Valeur entre class[3] (36) et class[4] (37)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // Entre class[3] et class[4], devrait avoir la couleur 'low'
       expect(result.color).to.equal(card.config.colors.low);
       expect(result.state).to.not.be.empty;
@@ -759,15 +760,15 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        37.5,  // Valeur au-dessus de class[4] (37)
+        37.5, // Valeur au-dessus de class[4] (37)
         true,
-        false
+        false,
       );
 
       // Vérifier que les classes de setpoint sont correctement définies
       expect(result.setpoint_class).to.be.an('array').with.length(5);
       expect(result.setpoint_class.map(Number)).to.deep.equal([33, 34, 35, 36, 37]);
-      
+
       // Au-dessus de class[4], devrait avoir la couleur 'warn'
       expect(result.color).to.equal(card.config.colors.warn);
       expect(result.state).to.not.be.empty;
@@ -782,8 +783,8 @@ describe('Pool Monitor Card', () => {
       card = new PoolMonitorCard();
       card.hass = {
         states: {
-          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' }
-        }
+          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' },
+        },
       };
 
       sensorConfig = {
@@ -792,7 +793,7 @@ describe('Pool Monitor Card', () => {
         mode: 'normal',
         setpoint: 35,
         min: 20,
-        max: 40
+        max: 40,
       };
 
       card.config = {
@@ -801,16 +802,16 @@ describe('Pool Monitor Card', () => {
           show_units: true,
           show_labels: true,
           compact: false,
-          language: 'en'
+          language: 'en',
         },
         colors: {
           warn: '#ff0000',
           low: '#00ff00',
-          normal: '#0000ff'
+          normal: '#0000ff',
         },
         sensors: {
-          test: sensorConfig
-        }
+          test: sensorConfig,
+        },
       };
     });
 
@@ -833,7 +834,7 @@ describe('Pool Monitor Card', () => {
           0,
           null,
           false,
-          false
+          false,
         );
         expect(result.value).toBe(value);
         expect(result.color).toBeDefined();
@@ -857,7 +858,7 @@ describe('Pool Monitor Card', () => {
         0,
         null,
         false,
-        false
+        false,
       );
       expect(result.value).toBeNull();
     });
@@ -871,8 +872,8 @@ describe('Pool Monitor Card', () => {
       card = new PoolMonitorCard();
       card.hass = {
         states: {
-          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' }
-        }
+          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' },
+        },
       };
 
       heatflowConfig = {
@@ -881,7 +882,7 @@ describe('Pool Monitor Card', () => {
         mode: 'heatflow',
         setpoint: 35,
         min: 20,
-        max: 40
+        max: 40,
       };
 
       card.config = {
@@ -889,17 +890,17 @@ describe('Pool Monitor Card', () => {
           show_icons: true,
           show_units: true,
           show_labels: true,
-          language: 'en'
+          language: 'en',
         },
         colors: {
           warn: '#ff0000',
           low: '#00ff00',
           normal: '#0000ff',
-          cool: '#00ffff'
+          cool: '#00ffff',
         },
         sensors: {
-          test: heatflowConfig
-        }
+          test: heatflowConfig,
+        },
       };
     });
 
@@ -922,7 +923,7 @@ describe('Pool Monitor Card', () => {
           0,
           null,
           false,
-          false
+          false,
         );
         expect(result.value).toBe(value);
         expect(result.color).toBeDefined();
@@ -939,8 +940,8 @@ describe('Pool Monitor Card', () => {
       card = new PoolMonitorCard();
       card.hass = {
         states: {
-          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' }
-        }
+          'sensor.test': { state: '25', last_updated: '2023-01-01T12:00:00Z' },
+        },
       };
 
       sensorConfig = {
@@ -949,7 +950,7 @@ describe('Pool Monitor Card', () => {
         mode: 'normal',
         setpoint: 35,
         min: 20,
-        max: 40
+        max: 40,
       };
 
       card.config = {
@@ -958,7 +959,7 @@ describe('Pool Monitor Card', () => {
           show_units: true,
           show_labels: true,
           compact: true,
-          language: 'en'
+          language: 'en',
         },
         colors: {
           low: '#fdcb6e',
@@ -966,11 +967,11 @@ describe('Pool Monitor Card', () => {
           normal: '#00b894',
           cool: '#00BFFF',
           marker: '#000000',
-          hi_low: '#00000099'
+          hi_low: '#00000099',
         },
         sensors: {
-          test: sensorConfig
-        }
+          test: sensorConfig,
+        },
       };
     });
 
@@ -990,7 +991,7 @@ describe('Pool Monitor Card', () => {
         0,
         null,
         false,
-        false
+        false,
       );
       expect(result).toBeDefined();
       expect(result.value).toBe(25);
@@ -1050,19 +1051,19 @@ describe('Pool Monitor Card', () => {
       test('should handle different languages', () => {
         // Test French translations
         card.config.display.language = 'fr';
-        
+
         const oneMinute = new Date(now - 1 * 60 * 1000);
         expect(card.timeFromNow(oneMinute)).toBe('il y a 1 minute');
-        
+
         const twoMinutes = new Date(now - 2 * 60 * 1000);
         expect(card.timeFromNow(twoMinutes)).toBe('il y a 2 minutes');
-        
+
         // Test German translations
         card.config.display.language = 'de';
-        
+
         const oneHour = new Date(now - 1 * 60 * 60 * 1000);
         expect(card.timeFromNow(oneHour)).toBe('vor 1 Stunde');
-        
+
         const twoHours = new Date(now - 2 * 60 * 60 * 1000);
         expect(card.timeFromNow(twoHours)).toBe('vor 2 Stunden');
       });
@@ -1083,7 +1084,7 @@ describe('Pool Monitor Card', () => {
           show_names: true,
           show_last_updated: false,
           gradient: true,
-          language: 'en'
+          language: 'en',
         },
         colors: {
           low: '#fdcb6e',
@@ -1091,7 +1092,7 @@ describe('Pool Monitor Card', () => {
           normal: '#00b894',
           cool: '#00BFFF',
           marker: '#000000',
-          hi_low: '#00000099'
+          hi_low: '#00000099',
         },
         sensors: {
           test: {
@@ -1103,20 +1104,20 @@ describe('Pool Monitor Card', () => {
             max: 50,
             setpoint: 35,
             step: 1,
-            mode: 'normal'
-          }
-        }
+            mode: 'normal',
+          },
+        },
       });
       card.hass = {
         states: {
-          'sensor.test': { 
+          'sensor.test': {
             state: '25',
             last_updated: '2023-01-01T12:00:00Z',
             attributes: {
-              unit_of_measurement: '°C'
-            }
-          }
-        }
+              unit_of_measurement: '°C',
+            },
+          },
+        },
       };
     });
 
@@ -1134,8 +1135,8 @@ describe('Pool Monitor Card', () => {
       card.processData = () => ({
         test: {
           invalid: true,
-          name: 'Test Sensor'
-        }
+          name: 'Test Sensor',
+        },
       });
       const result = card.render();
       const htmlString = String(result);
@@ -1148,8 +1149,8 @@ describe('Pool Monitor Card', () => {
       card.processData = () => ({
         test: {
           value: null,
-          entity: 'sensor.test'
-        }
+          entity: 'sensor.test',
+        },
       });
       const result = card.render();
       const htmlString = String(result);
@@ -1171,9 +1172,9 @@ describe('Pool Monitor Card', () => {
         null,
         'normal',
         0,
-        32,  // Valeur en dessous de class[0] (33)
+        32, // Valeur en dessous de class[0] (33)
         true,
-        false
+        false,
       );
 
       expect(result).toBeDefined();

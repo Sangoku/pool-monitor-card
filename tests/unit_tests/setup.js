@@ -178,43 +178,43 @@ vi.mock('../../src/locales/translations.js', () => ({
           seconds: 'just now',
           minutes: '{minutes} minute ago',
           hours: '{hours} hour ago',
-          days: '{days} day ago'
+          days: '{days} day ago',
         },
         time_plural: {
           seconds: 'just now',
           minutes: '{minutes} minutes ago',
           hours: '{hours} hours ago',
-          days: '{days} days ago'
-        }
+          days: '{days} days ago',
+        },
       },
       fr: {
         time: {
-          seconds: 'à l\'instant',
+          seconds: "à l'instant",
           minutes: 'il y a {minutes} minute',
           hours: 'il y a {hours} heure',
-          days: 'il y a {days} jour'
+          days: 'il y a {days} jour',
         },
         time_plural: {
-          seconds: 'à l\'instant',
+          seconds: "à l'instant",
           minutes: 'il y a {minutes} minutes',
           hours: 'il y a {hours} heures',
-          days: 'il y a {days} jours'
-        }
+          days: 'il y a {days} jours',
+        },
       },
       de: {
         time: {
           seconds: 'gerade eben',
           minutes: 'vor {minutes} Minute',
           hours: 'vor {hours} Stunde',
-          days: 'vor {days} Tag'
+          days: 'vor {days} Tag',
         },
         time_plural: {
           seconds: 'gerade eben',
           minutes: 'vor {minutes} Minuten',
           hours: 'vor {hours} Stunden',
-          days: 'vor {days} Tagen'
-        }
-      }
+          days: 'vor {days} Tagen',
+        },
+      },
     };
 
     const keys = key.split('.');
@@ -235,7 +235,7 @@ vi.mock('../../src/locales/translations.js', () => ({
     return Object.entries(values).reduce((acc, [key, value]) => {
       return acc.replace(`{${key}}`, value);
     }, translation);
-  }
+  },
 }));
 
 // Mock sensor configurations for tests

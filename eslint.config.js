@@ -9,7 +9,7 @@ export default [
   },
   js.configs.recommended,
   {
-    files: ['src/**/*.js'], // Only lint source files
+    files: ['src/**/*.js', 'test-bromine.js'], // Source files and test-bromine.js
     languageOptions: {
       globals: {
         ...globals.browser,

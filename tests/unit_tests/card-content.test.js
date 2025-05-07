@@ -79,7 +79,7 @@ describe('Card Content', () => {
       const mockDataWithMDI = {
         ...mockData,
         is_mdi: true,
-        mdi_icon: 'mdi:test-icon'
+        mdi_icon: 'mdi:test-icon',
       };
       const result = cardContent.generateBody(mockConfig, mockDataWithMDI);
       const htmlString = String(result);
@@ -91,7 +91,7 @@ describe('Card Content', () => {
       const mockDataWithImage = {
         ...mockData,
         is_mdi: false,
-        img_src: 'test-image.png'
+        img_src: 'test-image.png',
       };
       const result = cardContent.generateBody(mockConfig, mockDataWithImage);
       const htmlString = String(result);
@@ -102,7 +102,7 @@ describe('Card Content', () => {
     it('should not render icon when hide_icon is true', () => {
       const mockDataHideIcon = {
         ...mockData,
-        hide_icon: true
+        hide_icon: true,
       };
       const result = cardContent.generateBody(mockConfig, mockDataHideIcon);
       const htmlString = String(result);
@@ -115,8 +115,8 @@ describe('Card Content', () => {
         ...mockConfig,
         display: {
           ...mockConfig.display,
-          gradient: true
-        }
+          gradient: true,
+        },
       };
       const result = cardContent.generateBody(mockConfigWithGradient, mockData);
       const htmlString = String(result);
@@ -128,8 +128,8 @@ describe('Card Content', () => {
         ...mockConfig,
         display: {
           ...mockConfig.display,
-          gradient: false
-        }
+          gradient: false,
+        },
       };
       const result = cardContent.generateBody(mockConfigWithoutGradient, mockData);
       const htmlString = String(result);
@@ -161,7 +161,7 @@ describe('Card Content', () => {
     it('should render heatflow mode gradient correctly', () => {
       const mockDataHeatflow = {
         ...mockData,
-        mode: 'heatflow'
+        mode: 'heatflow',
       };
       const result = cardContent.generateBody(mockConfig, mockDataHeatflow);
       const htmlString = String(result);
@@ -171,7 +171,7 @@ describe('Card Content', () => {
     it('should render normal mode gradient correctly', () => {
       const mockDataNormal = {
         ...mockData,
-        mode: 'normal'
+        mode: 'normal',
       };
       const result = cardContent.generateBody(mockConfig, mockDataNormal);
       const htmlString = String(result);
@@ -183,7 +183,7 @@ describe('Card Content', () => {
         ...mockData,
         pct_min: 20,
         pct_max: 80,
-        pct_cursor: 50
+        pct_cursor: 50,
       };
       const result = cardContent.generateBody(mockConfig, mockDataWithMarkers);
       const htmlString = String(result);
@@ -197,7 +197,7 @@ describe('Card Content', () => {
         ...mockData,
         pct_min: 50,
         pct_max: 50,
-        pct_cursor: 50
+        pct_cursor: 50,
       };
       const result = cardContent.generateBody(mockConfig, mockDataEqualMarkers);
       const htmlString = String(result);
@@ -216,11 +216,11 @@ describe('Card Content', () => {
     it('should render compact mode with all elements', () => {
       const result = cardContent.generateCompactBody(mockConfig, mockData);
       const htmlString = String(result);
-      
+
       // Vérifier la présence des éléments structurels
       expect(htmlString).toContain('pool-monitor-container');
       expect(htmlString).toContain('pool-monitor-container-values');
-      
+
       // Vérifier les données affichées
       expect(htmlString).toContain(mockData.title);
       expect(htmlString).toContain(mockData.value);
@@ -232,13 +232,13 @@ describe('Card Content', () => {
         ...mockConfig,
         display: {
           ...mockConfig.display,
-          gradient: true
-        }
+          gradient: true,
+        },
       };
-      
+
       const result = cardContent.generateCompactBody(mockConfigWithGradient, mockData);
       const htmlString = String(result);
-      
+
       // Vérifier les éléments de gradient
       expect(htmlString).toContain('background-color');
       expect(htmlString).toContain(mockConfig.colors.normal);
@@ -248,12 +248,12 @@ describe('Card Content', () => {
       const mockDataWithMarkers = {
         ...mockData,
         pct_min: 20,
-        pct_max: 80
+        pct_max: 80,
       };
-      
+
       const result = cardContent.generateCompactBody(mockConfig, mockDataWithMarkers);
       const htmlString = String(result);
-      
+
       // Vérifier les marqueurs min/max
       expect(htmlString).toContain('cursor-text');
       expect(htmlString).toContain(`${mockDataWithMarkers.pct_min}%`);
@@ -339,7 +339,7 @@ describe('Card Content', () => {
       const dataWithCursor = {
         ...mockData,
         side_align: 'right',
-        pct_cursor: 75
+        pct_cursor: 75,
       };
       const result = cardContent.generateCompactBody(mockConfig, dataWithCursor);
       const htmlString = String(result);
@@ -359,18 +359,18 @@ describe('Card Content', () => {
         value: '25',
         unit: '°C',
         separator: '-',
-        state: 'Normal'
+        state: 'Normal',
       };
       const result = cardContent.generateCompactBody(mockConfig, dataWithEqualMarkers);
       const htmlString = String(result);
-      
+
       // Il y a toujours un cursor-text pour le curseur principal
       expect(htmlString.match(/cursor-text/g)).toHaveLength(1);
-      
+
       // Vérifier que les marqueurs min/max ne sont pas rendus
       expect(htmlString).not.toContain('border-left: 2px solid');
       expect(htmlString).not.toContain('border-right: 2px solid');
-      
+
       // Vérifier que les autres éléments sont correctement rendus
       expect(htmlString).toContain('Test Title');
       expect(htmlString).toContain('25');
@@ -390,14 +390,14 @@ describe('Card Content', () => {
         value: '25',
         unit: '°C',
         separator: '-',
-        state: 'Normal'
+        state: 'Normal',
       };
       const result = cardContent.generateCompactBody(mockConfig, dataWithDifferentMarkers);
       const htmlString = String(result);
-      
+
       // Un cursor-text pour le curseur principal et deux pour min/max
       expect(htmlString.match(/cursor-text/g)).toHaveLength(3);
-      
+
       // Vérifier les styles des marqueurs min/max
       expect(htmlString).toContain('border-left: 2px solid');
       expect(htmlString).toContain('border-right: 2px solid');
@@ -421,9 +421,9 @@ describe('Card Content', () => {
         expect.objectContaining({
           type: 'hass-more-info',
           detail: {
-            entityId: 'sensor.pool_temperature'
-          }
-        })
+            entityId: 'sensor.pool_temperature',
+          },
+        }),
       );
     });
 

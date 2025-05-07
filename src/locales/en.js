@@ -36,6 +36,7 @@
  * @property {string} sensor.product_volume - Product volume sensor name
  * @property {string} sensor.product_weight - Product weight sensor name
  * @property {string} sensor.ec - Electrical Conductivity sensor name
+ * @property {string} sensor.bromine - Bromine Level sensor name
  *
  * @property {Object} time - Time-related translations (singular forms)
  * @property {string} time.seconds - Text for events that just happened

@@ -227,10 +227,11 @@ export class PoolMonitorCard extends LitElement {
 
     const entityState = this.hass.states[entity];
     // Get the configured precision from the entity's attributes
-    const precision = entityState.attributes?.display_precision ?? 
-                     entityState.attributes?.precision ?? 
-                     this.countDecimals(parseFloat(entityState.state));
-    
+    const precision =
+      entityState.attributes?.display_precision ??
+      entityState.attributes?.precision ??
+      this.countDecimals(parseFloat(entityState.state));
+
     // Parse and format the value with the configured precision
     const rawValue = parseFloat(entityState.state);
     newData.value = isNaN(rawValue) ? null : Number(rawValue.toFixed(precision));

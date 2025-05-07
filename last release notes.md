@@ -35,9 +35,9 @@
 
 Install via HACS (recommended)
 
-   - Make sure you have [HACS](https://hacs.xyz) installed
-   - Search for "Pool Monitor Card" in HACS
-   - Click Install
+- Make sure you have [HACS](https://hacs.xyz) installed
+- Search for "Pool Monitor Card" in HACS
+- Click Install
 
 ## Support
 

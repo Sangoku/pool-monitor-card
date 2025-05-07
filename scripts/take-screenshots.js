@@ -24,7 +24,7 @@ async function takeScreenshot(page, screenshotConfig) {
   // Attendre que la carte soit chargée
   await page.waitForSelector(selectors.card);
   console.log('Attente du chargement complet de la carte...');
-  
+
   // Attendre que la page soit complètement chargée et stable
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(3000);
